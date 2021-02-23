@@ -6,7 +6,8 @@ let token = null;
 dotenv.config();
 
 router.get('/login', (req, res) => {
-    res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}?scope=repo`);
+    console.log(process.env.CLIENT_ID);
+    res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&scope=repo`);
 });
 
 router.get('/oauth_callback', (req, res) => {
@@ -23,14 +24,13 @@ router.get('/oauth_callback', (req, res) => {
         .then(_token => {
             token = _token
             console.log('My token : ', token);
-            res.json({ok : 1});
+            res.redirect('/api/home/');
         })
         .catch(err => res.status(500).send(err));
 })
 
-router.get('/home', async (req, res) => {
-    const resp = await axios.get('https://api.github.com/users/madrix01/repos')
-})
 
-
-module.exports = router;
+module.exports = {
+    router : router,
+    token : token
+}
