@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Dashboard from "../Pages/Dashboard";
 import Profile from "../Pages/Profile";
 import PageNotFound from './../Pages/PageNotFound';
-
+// import note from "./Note.jsx";
 
 function App() {
   return <BrowserRouter>
