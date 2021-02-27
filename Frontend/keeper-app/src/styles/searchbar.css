@@ -23,6 +23,7 @@
 	 text-align: center;
 	 color: #0000fa;
 	 font-weight: bold;
+     margin-bottom: 30px;
 }
  .wrapper .container-search .container-input {
 	 display: flex;
@@ -110,11 +111,9 @@
 	 margin-right: 12px;
 	 transition: all 0.3s ease-in-out;
 }
- .wrapper .container-search ul.search-history li:before {
-	 content: '\f1da';
-}
+
  .wrapper .container-search ul.search-history li:after {
-	 content: '\f30b';
+	 /* content: '\f30b'; */
 	 opacity: 0;
 	 position: absolute;
 	 right: 16px;
@@ -126,3 +125,6 @@
 	 opacity: 1;
 }
  
+.search-history > li > span{
+    margin-left: 10px;
+}

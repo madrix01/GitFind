@@ -1,12 +1,13 @@
 import React from 'react';
 import './../styles/navbar.css';
 
-export default function Navbar(){
+export default function Navbar(props){
+
     return <nav className="navbar">
     <div className="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
             <i className="fa fa-bars"></i>
         </div>
-    <a href="#" className="logo">logo</a>
+    <a href="#" className="logo">{props.brand}</a>
     <input type="checkbox" id="chkToggle" />
     <ul className="main-nav" id="js-menu">
       <li>

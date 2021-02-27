@@ -1,0 +1,6 @@
+{
+    "login":"http://3.18.109.33/api/login",
+    "user":"http://3.18.109.33/api/home/user",
+    "search":"http://3.18.109.33/api/search/repo",
+    "collab":"http://3.18.109.33/api/search/collaborators"
+}
