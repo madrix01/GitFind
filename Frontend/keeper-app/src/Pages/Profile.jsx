@@ -11,6 +11,7 @@ export default class Profile extends Component{
         this.state = {
             username:props.match.params.id,
             name:'',
+            avatar_url:'',
             obj:{}
         }
     }
@@ -25,7 +26,7 @@ export default class Profile extends Component{
             response.json().then(data=>{
                 this.setState(init=>{
                     console.log(data)
-                    return {...init, name:data.name,obj:data}
+                    return {...init, name:data.name,obj:data,avatar_url:data.avatar_url}
                 })
             })
         }).catch(e=>{
@@ -43,7 +44,7 @@ export default class Profile extends Component{
     <header class="profile-card_header">
       <div class="profile-card_header-container">
         <div class="profile-card_header-imgbox">
-          <img src="http://placekitten.com/600/900" alt="Mewy Pawpins" />
+          <img src={this.state.avatar_url} alt="Mewy Pawpins" />
         </div>
         <h1> {this.state.name} <span> Username : {this.state.username} </span></h1>
       </div>
