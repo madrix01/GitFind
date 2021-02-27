@@ -20,6 +20,9 @@ export default function Navbar(props){
         <Link className="nav-links" to="/blogs">Blogs</Link>
       </li>
       <li>
+        <Link className="nav-links" to="/add">Add</Link>
+      </li>
+      <li>
         <Link className="nav-links" to="/profile/pushpendrahpx">Profile</Link>
       </li>
       <li>

@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faHistory, faRecycle } from '@fortawesome/free-solid-svg-icons'
 import Login from './Login';
 import constants from './../constants.json';
-import { Chip,Button } from '@material-ui/core';
+import { Chip,Button, Fab } from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input'
 import Switch from '@material-ui/core/Switch';
+import { Link, Redirect } from 'react-router-dom';
 
 
 function EachResult(props){
@@ -167,6 +168,9 @@ export default class Dashboard extends Component{
     super(props);
 
 
+
+    
+
     this.state = {
       isLoggedIn:true
     }
@@ -174,14 +178,23 @@ export default class Dashboard extends Component{
     
   }
    
-    render(){
+    render(){  
+     
       return (<div>
-        <Navbar brand={"GitFind"} />
         {this.state.isLoggedIn === true ?
             <SearchBar brand={"GitFind"}  />
             :
                 <Login />
             }
+
+            <div style={{position:"absolute",bottom:"0px",right:"0px",zIndex:1,marginBottom:'20px',marginRight:'20px'}}>
+            
+              <Link to="/add">
+              <Fab  variant="extended" color="primary" aria-label="add">
+                <span style={{fontSize:'28px',margin:'5px'}}>+</span> Add
+              </Fab>
+              </Link>
+            </div>
     </div>);
     }
 }
