@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import constants from './../constants.json';
 
 async function LoginNow(){
@@ -19,7 +20,5 @@ async function LoginNow(){
 
 }
 export default function(){
-    return <div>
-        <button onClick={LoginNow}>Login </button>
-    </div>
+    return <Link  className="nav-links" style={{margin:0,padding:'10px',background:'transparent',outline:0,border:0,color:'rgba(255, 255, 255, 0.7)',fontSize:'24px'}} onClick={LoginNow}>Login </Link>
 }

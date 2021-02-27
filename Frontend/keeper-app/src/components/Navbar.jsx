@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Login from '../Pages/Login';
 import './../styles/navbar.css';
 
 export default function Navbar(props){
@@ -20,6 +21,9 @@ export default function Navbar(props){
       </li>
       <li>
         <Link className="nav-links" to="/profile/pushpendrahpx">Profile</Link>
+      </li>
+      <li>
+        <Login />
       </li>
     </ul>
   </nav>
