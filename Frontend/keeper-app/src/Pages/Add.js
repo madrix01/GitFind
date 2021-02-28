@@ -1,21 +1,32 @@
 import React,{ useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
+import Repo from "./../components/repo";
+import CreateRepo from "./../components/CreateRepo";
 
 const filter = createFilterOptions();
 
 export default function FreeSoloCreateOption() {
   const [value, setValue] = React.useState(null);
-  const [users,setUsers]=useState(null);
+  const [usersData,setUserData]=useState(null);
+  const [userData,setUsersData]=useState(null);
   useEffect( async() =>{
    const response= await fetch('https://api.github.com/users/Harshit2929/repos');
    const data= await response.json();
    //console.log(data);
-   setUsers(data);
+   setUserData(data);
   },[]);
   
 
+  function addRepo(newNote) {
+    setUsersData(prevNotes => {
+      return [...prevNotes,newNote];
+    });
+
+  }
+
   return (
+    <div>
     <Autocomplete
       value={value}
       onChange={(event, newValue) => {
@@ -32,6 +43,35 @@ export default function FreeSoloCreateOption() {
           setValue(newValue);
         }
       }}
+
+     
+
+
+      onClick={(event,newValue) =>{
+
+        function addRepo(newValue) {
+    setUser(prevNotes => {
+      return [...prevNotes,newValue];
+    });
+
+  }
+
+             if (typeof newValue === 'string') {
+          setValue({
+            name: newValue,
+          });
+        } else if (newValue && newValue.inputValue) {
+          // Create a new value from the user input
+          setValue({
+            name: newValue.inputValue,
+          });
+        } else {
+          setValue(newValue);
+        }
+      }}      
+
+      
+
       filterOptions={(options, params) => {
         const filtered = filter(options, params);
 
@@ -49,7 +89,8 @@ export default function FreeSoloCreateOption() {
       clearOnBlur
       handleHomeEndKeys
       id="free-solo-with-text-demo"
-      options={users}
+      options={userData}
+
       getOptionLabel={(option) => {
         // Value selected with enter, right from the input
         if (typeof option === 'string') {
@@ -62,15 +103,31 @@ export default function FreeSoloCreateOption() {
         // Regular option
         return option.name;
       }}
+
       renderOption={(option) => option.name}
       style={{ margin: 'auto',
   width: '50%',
    padding: '10px'}}
       freeSolo
       renderInput={(params) => (
+        <div>
         <TextField {...params} label="Select repos you want to add" variant="outlined" />
-      )}
+    
+</div>
+  
+  )}
     />
+  <CreateRepo onAdd={addRepo} />
+
+<div style={{display:'flex',width:'100%', textAlign:'center', margin:'0 auto'}}>
+  {userData.map((noteItem,index) => {
+      //console.log(note);
+      return <Repo key={index} id={index} title={noteItem.name} content={noteItem.language}/>;
+  })}
+</div>
+</div>
+
+
   );
 }
 
