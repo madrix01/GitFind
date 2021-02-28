@@ -18,6 +18,7 @@ router.get('/oauth_callback', (req, res) => {
     }
 
     const opts = {headers : {accept : 'application/json'}};
+    console.log(axios.post(`https://github.com/login/oauth/access_token`, body, opts));
     axios.post(`https://github.com/login/oauth/access_token`, body, opts)
         .then(console.log('Posted request'))
         .then(res => res.data['access_token'])
