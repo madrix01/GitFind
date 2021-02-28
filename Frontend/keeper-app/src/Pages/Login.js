@@ -6,7 +6,7 @@ import constants from './../constants.json';
 export default function(){
     let [user,setUser]=useState(localStorage.getItem("username"));
 
-    console.log(user)
+    console.log(user);
     async function LoginNow(){
     
     // let re = await fetch(constants.login);

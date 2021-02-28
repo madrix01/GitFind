@@ -7,7 +7,7 @@ import PageNotFound from './../Pages/PageNotFound';
 import Navbar from "./Navbar";
 import Add from "../Pages/Add";
 // import note from "./Note.jsx";
-
+import {userProvider} from './userContext.js'
 function App() {
   return <BrowserRouter>
     <Switch>
